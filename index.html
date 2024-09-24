@@ -22,9 +22,9 @@
 <div class="works animate">
     <h3>Мои работы</h3>
     <ul>
-        <li><a href="https://www.youtube.com/watch?v=KWaocQYVpkM&t=52s" target="_blank">БНКТМ "ВОР И КОНДИТРЕР" - 105 просмотров</a></li>
-        <li><a href="https://www.youtube.com/watch?v=OPwF0qoMj_Y&t=414s" target="_blank">БНКТМ - "ВПЕРВЫЕ В ТИРАСПОЛЕ" - 141 просмотр</a></li>
-        <li><a href="https://www.youtube.com/watch?v=_W_bOLaP-To&t=387s" target="_blank">БНКТМ - "КУЛИНАРНАЯ БИТВА" - 194 просмотра</a></li>
+        <li><a href="#" data-video-id="KWaocQYVpkM">БНКТМ "ВОР И КОНДИТРЕР" - 105 просмотров</a></li>
+        <li><a href="#" data-video-id="OPwF0qoMj_Y">БНКТМ - "ВПЕРВЫЕ В ТИРАСПОЛЕ" - 141 просмотр</a></li>
+        <li><a href="#" data-video-id="_W_bOLaP-To">БНКТМ - "КУЛИНАРНАЯ БИТВА" - 194 просмотра</a></li>
     </ul>
 </div>
 
@@ -46,8 +46,16 @@
     <p>© 2024 Владислав Александрович Харченко. Все права защищены.</p>
 </footer>
 
+<!-- Модальное окно для видео -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <iframe id="youtubeVideo" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
 <button class="scrollToTop">↑</button>
 
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
