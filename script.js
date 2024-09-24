@@ -1,4 +1,4 @@
-// УЛУЧШЕНИЕ 1: Кнопка "Наверх"
+// Кнопка "Наверх"
 const scrollToTopButton = document.querySelector('.scrollToTop');
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
@@ -9,42 +9,38 @@ window.addEventListener('scroll', () => {
 });
 
 scrollToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Модальное окно для видео
+const modal = document.getElementById('videoModal');
+const modalContent = document.querySelector('.modal-content');
+const closeModal = document.querySelector('.close');
+const videoLinks = document.querySelectorAll('.works a');
+const youtubeVideo = document.getElementById('youtubeVideo');
+
+videoLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const videoId = link.getAttribute('data-video-id');
+        youtubeVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modal.style.display = 'flex';
     });
 });
 
-// УЛУЧШЕНИЕ 2: Анимация плавного появления страницы
-document.addEventListener('DOMContentLoaded', () => {
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    youtubeVideo.src = ''; // Остановить видео
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        youtubeVideo.src = ''; // Остановить видео
+    }
+});
+
+// Плавная загрузка
+window.onload = () => {
     document.body.classList.add('loaded');
-});
-
-// УЛУЧШЕНИЕ 3: Анимация при наведении на социальные сети
-const socialIcons = document.querySelectorAll('.social-icon img');
-socialIcons.forEach(icon => {
-    icon.addEventListener('mouseover', () => {
-        icon.classList.add('hovered');
-    });
-    icon.addEventListener('mouseleave', () => {
-        icon.classList.remove('hovered');
-    });
-});
-
-// УЛУЧШЕНИЕ 4: Модальное окно с работами
-const works = document.querySelectorAll('.works a');
-works.forEach(work => {
-    work.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert(`Открыта работа: ${work.textContent}`);
-    });
-});
-
-// УЛУЧШЕНИЕ 5: Счетчик просмотров при нажатии на работы
-let viewCount = [105, 141, 194];
-works.forEach((work, index) => {
-    work.addEventListener('click', () => {
-        viewCount[index]++;
-        work.textContent = `${work.textContent.split(' - ')[0]} - ${viewCount[index]} просмотров`;
-    });
-});
+};
